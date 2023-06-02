@@ -1,8 +1,8 @@
 from collections import defaultdict
 from random import randint, random, shuffle, sample
-from data_structure import Machine, Job
 from copy import deepcopy
-
+import pandas as pd
+from .data_structure import Machine, Job
 class GA:
     def __init__(self, matrix, operation_machine_num):
         self.matrix = matrix
@@ -173,7 +173,19 @@ class GA:
             updated_sol_group[i] = sol
         self.sol_group = updated_sol_group
 
+    # output
+    def output_sol(self):
+        record_dict = {}
+        makespan = max(job.last_finish_time for j_id, job in self.job_dict.items())
 
+        for op_id, machines in self.machine_dict.items():
+            for m_id, machine in machines.items():
+                machine_id = '工序{0} 机器{1}'.format(op_id, m_id)
+                record = {k: '' for k in range(makespan)}
+                record.update(machine.schedule)
+                record_dict[machine_id] = record
 
+        df = pd.DataFrame(record_dict, dtype=object)
+        df.to_csv('output.csv', index=False)
 
 

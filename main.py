@@ -1,6 +1,6 @@
-from data_process import GA
+from src.data_process import GA
 import random
-
+import time
 
 # parameters
 matrix = [
@@ -17,30 +17,34 @@ iter_num = 100
 mutation_rate = 0.05
 crossover_rate = 0.6
 
-# generate initial group
-input = GA(matrix, operation_machine_num)
-input.initialize_sol_group()
 
-# iterrate to run genetic algorithm
-for i in range(iter_num):
+if __name__ == '__main__':
+    st = time.time()
+    # generate initial group
+    input = GA(matrix, operation_machine_num)
+    input.initialize_sol_group()
+
+    # iterrate to run genetic algorithm
+    for i in range(iter_num):
+        input.calculate_sol_group_fitness()
+        input.select()
+        p = random.random()
+        if p <= crossover_rate:
+            input.crossover()
+        if p <= mutation_rate:
+            input.mutation()
+
+    # calculate fitness of final group solutions
     input.calculate_sol_group_fitness()
-    input.select()
-    p = random.random()
-    if p <= crossover_rate:
-        input.crossover()
-    if p <= mutation_rate:
-        input.mutation()
+    key, best_sol = input.get_best_sol()
 
-# calculate fitnes of final group solutions
-input.calculate_sol_group_fitness()
-key, best_sol = input.get_best_sol()
+    # generate schedule of best sol
+    input.initialize_machine_dict()
+    input.initialize_job_dict()
+    input.generate_schedule(job_seq=best_sol)
 
-# generate schedule of best sol
-input.initialize_machine_dict()
-input.initialize_job_dict()
-input.generate_schedule(job_seq=best_sol)
-
-
+    print('Total running time: {} seconds'.format(time.time() - st))
+    input.output_sol()
 
 
 
