@@ -40,10 +40,13 @@ To run project:
 
  **Result**
 
-The result will be given in a csv file called 'output.csv' after the project (main.py) is successfully executed. Then, you can execute python gantt.py to get a gantt plot of 'output.csv'.
+The result will be given in a csv file called *output.csv* after the project (main.py) is successfully executed. Then, you can execute python gantt.py to get a gantt plot of *output.csv*.
+
 An example is given as follows. 
 
-This is a result of six jobs finished by three oprations with duration matrix as follows.
+![排产结果示例图](https://github.com/ZhiyingChen/HFSSP_GA/blob/master/images/gantt_example.png)
+
+This is a result of six jobs finished by three operations with the duration matrix as follows.
 
 $$
 matrix = [
