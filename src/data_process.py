@@ -180,7 +180,7 @@ class GA:
 
         for op_id, machines in self.machine_dict.items():
             for m_id, machine in machines.items():
-                machine_id = '工序{0} 机器{1}'.format(op_id, m_id)
+                machine_id = 'Op {0} Machine {1}'.format(op_id, m_id)
                 record = {k: '' for k in range(makespan)}
                 record.update(machine.schedule)
                 record_dict[machine_id] = record

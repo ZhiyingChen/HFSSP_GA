@@ -48,7 +48,7 @@ def create_draw_defination():
 def draw_prepare():
     df = create_draw_defination()
     return ff.create_gantt(df, colors=colors, index_col='Resource',
-                           title='排产结果展示', show_colorbar=True,
+                           title='Gantt Plot`', show_colorbar=True,
                            group_tasks=True, data=n_duration_time,
                            showgrid_x=True, showgrid_y=True)
 
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             n_duration_time.append(duration)
             n_bay_start.append(machineMap[machine])
             n_bay_text.append(machine)
-            n_job_id.append('工件'+job)
+            n_job_id.append('Job'+job)
             color = jobMap[job]
             colors.append(color)
     draw_gantt()
