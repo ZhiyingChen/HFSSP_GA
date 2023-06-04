@@ -40,6 +40,23 @@ To run project:
 
  **Result**
 
-The result will be given in a csv file called 'output.csv' after the project is successfully executed.
+The result will be given in a csv file called 'output.csv' after the project (main.py) is successfully executed. Then, you can execute python gantt.py to get a gantt plot of 'output.csv'.
+An example is given as follows. 
+
+This is a result of six jobs finished by three oprations with duration matrix as follows.
+
+$$
+matrix = [
+    [2, 4, 6],
+    [4, 9, 2],
+    [4, 2, 8],
+    [9, 5, 6],
+    [5, 2, 7],
+    [9, 4, 3]
+]
+$$
+
+There are two machines available for each operation.
+
   
 
